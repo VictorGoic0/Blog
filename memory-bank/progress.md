@@ -2,27 +2,27 @@
 
 ## What Works
 
-- **PRD:** Complete. Defines scope, 9 PRs, technical architecture, directory structure, design specs (including Sass and color variables), and deployment workflow.
-- **Design reference:** Assets in `designs/` (e.g. page-design.png, list-design.png) available for PR #3.
-- **Repo:** Contains portfolio (e.g. index.html), CNAME, PRD; blog/ not yet created.
-- **Memory Bank:** Initialized with projectbrief, productContext, systemPatterns, techContext, activeContext, progress.
+- **PR #1 (DNS & subdomain):** Complete. SquareSpace CNAME for `blog` → GitHub Pages; CNAME file at repo root with `blog.victorgoico.com`; DNS documented in README.
+- **Repo:** Blog-only repo; PRD and README aligned to this. Memory Bank initialized.
 
 ## What's Left to Build
 
-- **PR #1:** DNS (CNAME for blog.victorgoico.com).
-- **PR #2:** `blog/` directory, build.py, posts/templates/scss/css/output structure, markdown parsing, HTML generation.
-- **PR #3:** Base/post/index templates, Sass setup and variables, styling to match designs (white, soft black, gray).
-- **PR #4:** SEO meta, Open Graph, Twitter Cards, RSS, sitemap, robots.txt.
-- **PR #5:** Tags from frontmatter, tag index, filtering UI.
-- **PR #6:** GA4 integration.
-- **PR #7:** GitHub Pages repo/branch, deployment, CNAME in output.
-- **PR #8:** Blog link in portfolio nav (after DNS + deployment).
-- **PR #9:** First post, README, content workflow docs.
+| PR   | Scope                              | Status   |
+|------|------------------------------------|----------|
+| #2   | Project structure & build script  | Not started |
+| #3   | HTML templates & Sass design      | Not started |
+| #4   | SEO, RSS, sitemap                  | Not started |
+| #5   | Tags/categories                    | Not started |
+| #6   | Google Analytics 4                 | Not started |
+| #7   | GitHub Pages deployment            | Not started |
+| #8   | Portfolio nav → blog (portfolio repo) | Not started |
+| #9   | First post & documentation         | Not started |
 
 ## Current Status
 
-Planning and documentation phase. No blog code or build script yet. Ready to start PR #1 (DNS) and/or PR #2 (project structure and build script).
+- **Phase:** Pre-implementation. DNS and repo setup done; build pipeline and content pipeline not yet built.
+- **Blocker:** None. Ready to start PR #2.
 
 ## Known Issues
 
-- None. PRD Design Specs in PRD.md still list older color line “Background: #ffffff or #fafafa” and “Text: #222222” without the full soft-black/gray breakdown; the intended spec (white bg, soft black primary, gray secondary and lines) is documented in memory-bank (systemPatterns, activeContext) and can be applied when implementing PR #3. Consider updating PRD.md Design Specs to that wording when editing the file.
+- None. No build script or output yet; no live site until after PR #7 and deployment config.

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Build a custom markdown-based blog system with automated HTML generation, SEO optimization, RSS feed, analytics, and tags/categories. Deploy on subdomain blog.victorgoico.com with clean, minimal design separate from portfolio. Design reference materials have been brought in (in `designs/`) to use as a guideline for styles.
+Build a custom markdown-based blog system with automated HTML generation, SEO optimization, RSS feed, analytics, and tags/categories. Deploy on subdomain blog.victorgoico.com with clean, minimal design. This repo is dedicated to the blog only (GitHub Pages allows one CNAME per repo, so the blog lives in a separate repo from the portfolio). Design reference materials have been brought in (in `designs/`) to use as a guideline for styles.
 
 ## Goals
 
@@ -26,8 +26,9 @@ Build a custom markdown-based blog system with automated HTML generation, SEO op
 
 ### Directory Structure
 
+Repo root is the blog project
+
 ```
-blog/
 ├── build.py              # Markdown → HTML converter
 ├── requirements.txt      # Python dependencies
 ├── posts/                # Source markdown files
@@ -47,7 +48,7 @@ blog/
 │   ├── feed.xml
 │   └── sitemap.xml
 ├── .gitignore
-├── CNAME                # blog.victorgoico.com
+├── CNAME                # blog.victorgoico.com (repo root)
 └── README.md
 ```
 
@@ -71,9 +72,9 @@ Markdown Posts → build.py → HTML + RSS + Sitemap → Git Push → GitHub Pag
 - [x] 1.1. Log into SquareSpace DNS management for victorgoico.com
 - [x] 1.2. Add CNAME record: `blog` pointing to `victorgoic0.github.io` (or your GitHub Pages domain)
 - [x] 1.3. Verify DNS propagation (use dig or nslookup)
-- [x] 1.4. Create `blog/CNAME` file with content: `blog.victorgoico.com`
+- [x] 1.4. Create `CNAME` file at repo root with content: `blog.victorgoico.com`
 - [x] 1.5. Test subdomain resolves correctly
-- [x] 1.6. Document DNS setup in blog README.md
+- [x] 1.6. Document DNS setup in README.md
 
 **SquareSpace DNS Steps:**
 
@@ -94,17 +95,16 @@ Markdown Posts → build.py → HTML + RSS + Sitemap → Git Push → GitHub Pag
 
 #### Tasks
 
-- [ ] 2.1. Create `/blog` directory in repo root
-- [ ] 2.2. Set up directory structure (posts/, templates/, scss/, css/, output/)
-- [ ] 2.3. Create `.gitignore` to exclude output/ directory
-- [ ] 2.4. Create `requirements.txt` with dependencies (markdown, python-frontmatter, jinja2)
-- [ ] 2.5. Build `build.py` script skeleton with argument parsing
-- [ ] 2.6. Implement markdown file discovery and parsing
-- [ ] 2.7. Add frontmatter extraction (title, date, tags, description)
-- [ ] 2.8. Implement basic HTML generation from markdown
-- [ ] 2.9. Add file writing to output/ directory
-- [ ] 2.10. Test with sample markdown post
-- [ ] 2.11. Add README.md with usage instructions
+- [ ] 2.1. Set up directory structure at repo root (posts/, templates/, scss/, css/, output/)
+- [ ] 2.2. Create `.gitignore` to exclude output/ directory
+- [ ] 2.3. Create `requirements.txt` with dependencies (markdown, python-frontmatter, jinja2)
+- [ ] 2.4. Build `build.py` script skeleton with argument parsing
+- [ ] 2.5. Implement markdown file discovery and parsing
+- [ ] 2.6. Add frontmatter extraction (title, date, tags, description)
+- [ ] 2.7. Implement basic HTML generation from markdown
+- [ ] 2.8. Add file writing to output/ directory
+- [ ] 2.9. Test with sample markdown post
+- [ ] 2.10. Add README.md with usage instructions
 
 **Dependencies:**
 
@@ -255,16 +255,17 @@ Jinja2>=3.1.2
 **Priority:** High
 **Estimated Time:** 1 hour
 
+**Context:** This repo is the blog-only repo (separate from the portfolio repo) so GitHub Pages can use a single CNAME for blog.victorgoico.com.
+
 #### Tasks
 
-- [ ] 7.1. Create new repo `VictorGoic0-blog` or use separate branch
-- [ ] 7.2. Push blog code to GitHub
-- [ ] 7.3. Enable GitHub Pages in repo settings
-- [ ] 7.4. Set source to main branch / output folder
-- [ ] 7.5. Verify CNAME file is in output directory
-- [ ] 7.6. Test blog.victorgoico.com loads correctly
-- [ ] 7.7. Set up automatic deployment workflow (optional)
-- [ ] 7.8. Document deployment process in README.md
+- [ ] 7.1. Push blog code to this repo
+- [ ] 7.2. Enable GitHub Pages in repo settings
+- [ ] 7.3. Set source to main branch (root or output folder, per build setup)
+- [ ] 7.4. Ensure CNAME is at repo root or in deployed output so GitHub Pages serves the custom domain
+- [ ] 7.5. Test blog.victorgoico.com loads correctly
+- [ ] 7.6. Set up automatic deployment workflow (optional)
+- [ ] 7.7. Document deployment process in README.md
 
 ---
 
@@ -273,22 +274,22 @@ Jinja2>=3.1.2
 **Priority:** Medium
 **Estimated Time:** 30 minutes
 
-**Note:** Complete AFTER PR #1 (DNS) and PR #7 (Deployment) are done
+**Note:** Portfolio lives in a separate repo. Complete AFTER PR #1 (DNS) and PR #7 (Deployment) are done. Changes are made in the portfolio repo, not this blog repo.
 
 #### Tasks
 
-- [ ] 8.1. Open portfolio `index.html`
+- [ ] 8.1. In the portfolio repo, open `index.html`
 - [ ] 8.2. Add "Blog" link to navigation menu
 - [ ] 8.3. Link to `https://blog.victorgoico.com`
 - [ ] 8.4. Ensure link opens in same tab (internal site experience)
 - [ ] 8.5. Style blog link to match other nav items
 - [ ] 8.6. Test navigation from portfolio to blog works
-- [ ] 8.7. Add back link from blog to portfolio (optional)
+- [ ] 8.7. Add back link from blog to portfolio (optional; edit blog templates in this repo)
 
-**Code Change:**
+**Code Change (in portfolio repo):**
 
 ```html
-<!-- In index.html nav -->
+<!-- In portfolio repo index.html nav -->
 <ul class="nav-links">
   <li><a href="#featured">Featured</a></li>
   <li><a href="#about">About</a></li>
@@ -400,7 +401,7 @@ python build.py --clean
 - RSS feed functional and validated
 - Google Analytics tracking visitors
 - Can write and publish new posts in < 5 minutes
-- Portfolio nav links to blog correctly
+- Portfolio repo nav links to blog correctly
 - All SEO meta tags render properly
 
 ---

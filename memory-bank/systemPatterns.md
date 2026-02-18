@@ -2,28 +2,32 @@
 
 ## Architecture
 
-- **Static site:** No server-side runtime. Build produces HTML, CSS, RSS, sitemap; GitHub Pages serves files.
-- **Single build script:** `build.py` discovers Markdown in `posts/`, parses frontmatter, renders Jinja2 templates, writes to `output/`. Optional: run Sass as part of build or via separate step (e.g. `sass scss:css`).
-- **Templates:** `base.html` (layout, nav, footer), `post.html` (single post), `index.html` (blog homepage with post list and tag filtering). All reference compiled `css/blog.css`.
+- **Static site:** No server at runtime. Build produces HTML, CSS, XML (RSS, sitemap).
+- **Single build script:** `build.py` owns Markdown discovery, frontmatter parsing, HTML generation, RSS, sitemap. Templates are Jinja2.
+- **Styling:** Sass → CSS. Design tokens in `_variables.scss`; single entry `blog.scss` → `css/blog.css`. Variables drive colors, spacing, typography.
 
 ## Key Technical Decisions
 
-- **Sass over plain CSS:** Design system via variables (colors, spacing, typography). Install Sass tooling as needed (e.g. `sass` npm package) in PR #3.
-- **Design reference:** `designs/` (e.g. page-design.png, list-design.png) is the source of truth for layout and visual treatment when implementing templates and Sass.
-- **Color system (design specs):**
-  - Background: #ffffff (white).
-  - Primary text (headings, body, nav): soft black (e.g. #222222 or #1a1a1a), not pure black.
-  - Secondary text (date, “By”, metadata): gray.
-  - Lines/borders (e.g. nav separator): light gray.
-  - Links: primary (soft black) with underline, or distinct link color; align with design reference.
-- **Content format:** Markdown + YAML frontmatter; Python `markdown` and `python-frontmatter` for parsing; Jinja2 for HTML.
+- **Repo boundary:** Blog-only repo so GitHub Pages can use one CNAME (blog.victorgoico.com). Portfolio is a separate repo; PR #8 changes are in the portfolio repo.
+- **Content format:** Markdown + YAML frontmatter (title, date, tags, description). No CMS.
+- **Output:** Generated files in `output/` (gitignored). CNAME must be at repo root or copied into output so Pages serves the custom domain.
+- **Tags:** Extracted in build; tag index in build script. Filtering on index (client-side or tag pages) per PR #5.
 
 ## Component Relationships
 
-- `build.py` → reads `posts/*.md`, `templates/*.html`, (optionally triggers Sass) → writes `output/` (HTML, feed.xml, sitemap.xml).
-- Templates extend `base.html`; base includes `blog.css` and meta/RSS links.
-- Tag data comes from frontmatter; build script builds tag index; index template uses it for filtering UI.
+```
+posts/*.md  →  build.py  →  templates (base, post, index)  →  output/*.html
+                build.py  →  feed.xml, sitemap.xml, robots.txt
+scss/*.scss →  (Sass)    →  css/blog.css  →  linked from base.html
+CNAME       →  (in repo root or output)  →  GitHub Pages custom domain
+```
 
-## Deployment Flow
+- **build.py:** Reads `posts/`, uses `templates/`, writes `output/`. Emits RSS and sitemap.
+- **templates:** base.html (layout, head, nav, footer); post.html (article); index.html (post list, tag filter).
+- **Design:** `designs/` is reference only; implementation follows PRD design specs via Sass variables.
 
-Markdown → build.py → HTML + RSS + sitemap (+ Sass → css) → git push → GitHub Pages. CNAME in repo points blog.victorgoico.com to Pages.
+## Design Specs (Implementation)
+
+- Background: #ffffff or #fafafa. Text: #222222. Links: #0066cc, underlined on hover.
+- Font: system fonts or Inter/Roboto. Max width: 680–720px. Line height: 1.6–1.8. Generous margins/padding.
+- Code blocks: syntax highlighting. Mobile responsive.

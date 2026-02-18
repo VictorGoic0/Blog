@@ -2,21 +2,21 @@
 
 ## Current Focus
 
-- **Planning complete:** PRD (PRD.md) defines the custom blog system, 9 PRs, design approach, and color/styling specs.
-- **Design reference:** Designs in `designs/` (e.g. page-design.png, list-design.png) are the guideline for styles; PR #3 owns implementing templates and Sass to match.
-- **Styling decisions locked:** Sass (not plain CSS); design tokens in `_variables.scss`. Colors: white background (#ffffff), soft black for primary text (#222222 or #1a1a1a, not pure black), gray for secondary text (date, “By”) and for lines (e.g. nav separator). Links: soft black with underline or distinct color per design.
+- Memory Bank initialized from PRD. Next: start implementation per PR #2 (project structure and build script core).
+- PR #1 (DNS and CNAME) is done; CNAME exists at repo root. Repo is blog-only.
 
 ## Recent Changes
 
-- PRD updated to: reference `designs/` in overview and in PR #3; use Sass with variables for design system; document color variables (white, soft black, gray for secondary and lines).
-- Memory Bank created and populated from PRD and these decisions.
+- PRD and README updated for blog-only repo (no portfolio in same repo; one CNAME per GitHub Pages repo).
+- Memory Bank created: projectbrief, productContext, systemPatterns, techContext, activeContext, progress.
 
 ## Next Steps
 
-- Execute PRs in order: start with **PR #1 (DNS)** if subdomain is needed first, then **PR #2 (structure + build script)**, then **PR #3 (templates + Sass + design)**. PR #8 (portfolio nav) after PR #1 and PR #7.
+1. **PR #2:** Set up directory structure (posts/, templates/, scss/, css/, output/), .gitignore, requirements.txt, build.py skeleton with discovery and parsing, frontmatter, HTML generation, output writing, README usage.
+2. After PR #2: PR #3 (templates + Sass design), then PR #4 (SEO, RSS, sitemap), then remaining PRs per PRD order.
 
 ## Active Decisions
 
-- **Design system:** Sass variables for spacing, typography, colors; install Sass tooling in PR #3.
-- **Design reference:** All visual and layout choices in PR #3 must align with `designs/`.
-- **Color palette:** White bg; soft black (readability); gray for metadata and borders. No pure black.
+- Build output: `output/` directory; CNAME must be present in deployed root (repo root or copied into output when using output/ as Pages source).
+- Design: follow `designs/` and PRD design specs; implement via Sass variables in `scss/`.
+- Portfolio link to blog: implemented in portfolio repo (PR #8), not in this repo.

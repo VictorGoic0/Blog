@@ -1,43 +1,41 @@
 # Project Brief: Custom Blog System
 
+## Purpose
+
+Build a custom markdown-based blog system for blog.victorgoico.com. Full control over design, content, and features. Deploy on GitHub Pages; blog lives in this dedicated repo (one CNAME per repo; portfolio is a separate repo).
+
 ## Core Requirements
 
-Build a custom markdown-based blog system with:
-
-- Automated HTML generation via a Python build script
-- SEO optimization (meta tags, Open Graph, Twitter Cards, JSON-LD, sitemap, robots.txt)
-- RSS feed (RSS 2.0)
-- Analytics (Google Analytics 4)
-- Tags and categories with filtering
-- Deployment on subdomain **blog.victorgoico.com** (GitHub Pages, CNAME via SquareSpace DNS)
-- Clean, minimal design separate from the main portfolio
-
-Design reference materials live in **`designs/`** and must be used as the guideline for styles, layout, and visual treatment.
+- **Content:** Markdown with YAML frontmatter (title, date, tags, description).
+- **Build:** Custom Python script converts Markdown → HTML; generates RSS feed and sitemap.
+- **Design:** Clean, minimal, readable; design system via Sass variables; reference in `designs/`.
+- **SEO:** Meta tags, Open Graph, Twitter Cards, canonical URLs, JSON-LD, sitemap, robots.txt.
+- **Discovery:** Tags/categories; optional tag pages or client-side filtering on index.
+- **Analytics:** Google Analytics 4.
+- **Hosting:** GitHub Pages at blog.victorgoico.com (CNAME; DNS via SquareSpace).
 
 ## Goals
 
-- Professional blogging platform to share technical knowledge and build audience
-- Thought leadership and increased reach for job opportunities
-- Full control over design, features, and content
-- Optimized for SEO and discoverability
-- Support cross-posting workflow: Blog → Twitter → Medium → LinkedIn
+- Professional platform to share technical knowledge and build audience.
+- Thought leadership and reach for job opportunities.
+- Optimize for SEO and discoverability.
+- Support cross-posting (Blog → Twitter → Medium → LinkedIn).
+- Publish new posts in under 5 minutes.
 
-## Scope (PRs)
+## Scope (In Scope)
 
-Work is organized into 9 PRs:
+- Static site generation (no server runtime).
+- Posts, index, tag filtering, RSS, sitemap.
+- GA4, CNAME/DNS, README and usage docs.
+- Portfolio nav link to blog (change in portfolio repo); optional back link from blog to portfolio (in this repo).
 
-1. **DNS & subdomain** — CNAME for blog.victorgoico.com (critical first)
-2. **Project structure & build script** — `blog/` layout, `build.py`, markdown → HTML
-3. **HTML templates & design** — Base/post/index templates, **Sass** design system, follow `designs/`
-4. **SEO, RSS, sitemap** — Meta, feed.xml, sitemap.xml, robots.txt
-5. **Tags/categories** — Frontmatter tags, index filtering, tag badges
-6. **Google Analytics** — GA4 on blog
-7. **GitHub Pages deployment** — Repo/branch, Pages config, CNAME in output
-8. **Portfolio nav** — Blog link from portfolio (after DNS + deployment)
-9. **First post & docs** — Sample post, README, content workflow
+## Scope (Out of Scope for Initial PRs)
 
-## Out of Scope (Initial)
+- Comments (utterances/giscus), reading time, related posts, share buttons.
+- Client-side search, archive by date, newsletter.
+- Dark mode, TOC, image optimization, print stylesheet.
 
-- Comments, related posts, social share buttons (Phase 2)
-- Search, archive, newsletter (Phase 3)
-- Dark mode, TOC, image optimization, print (Phase 4)
+## Source of Truth
+
+- **PRD:** `PRD.md` — full task breakdown (PRs #1–#9), design specs, success metrics.
+- **Memory Bank:** This folder — project context for AI and handoffs.
