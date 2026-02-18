@@ -1,9 +1,11 @@
 # Product Requirements Document: Custom Blog System
 
 ## Overview
-Build a custom markdown-based blog system with automated HTML generation, SEO optimization, RSS feed, analytics, and tags/categories. Deploy on subdomain blog.victorgoico.com with clean, minimal design separate from portfolio.
+
+Build a custom markdown-based blog system with automated HTML generation, SEO optimization, RSS feed, analytics, and tags/categories. Deploy on subdomain blog.victorgoico.com with clean, minimal design separate from portfolio. Design reference materials have been brought in (in `designs/`) to use as a guideline for styles.
 
 ## Goals
+
 - Create a professional blogging platform to share technical knowledge and build audience
 - Establish thought leadership and increase reach for job opportunities
 - Maintain full control over design, features, and content
@@ -13,15 +15,17 @@ Build a custom markdown-based blog system with automated HTML generation, SEO op
 ## Technical Architecture
 
 ### Stack
+
 - **Static Site Generation:** Custom Python build script
 - **Content Format:** Markdown with YAML frontmatter
 - **Templating:** Jinja2
-- **Styling:** Custom CSS (minimal, clean design)
+- **Styling:** Sass (compiled to CSS). Use Sass variables for a consistent design system (spacing, typography, colors). Install Sass tooling as needed (e.g. `sass` npm package or build-step dependency).
 - **Hosting:** GitHub Pages
-- **Domain:** blog.victorgoico.com (subdomain on GoDaddy)
+- **Domain:** blog.victorgoico.com (subdomain on SquareSpace)
 - **Analytics:** Google Analytics 4
 
 ### Directory Structure
+
 ```
 blog/
 ├── build.py              # Markdown → HTML converter
@@ -32,8 +36,11 @@ blog/
 │   ├── base.html        # Shared layout
 │   ├── post.html        # Single post template
 │   └── index.html       # Blog index template
+├── scss/                 # Sass source (compile to css/)
+│   ├── _variables.scss  # Design tokens: colors, spacing, typography
+│   └── blog.scss        # Main entry (imports variables, components)
 ├── css/
-│   └── blog.css         # Clean, minimal styling
+│   └── blog.css         # Compiled output from scss/ (gitignore or commit)
 ├── output/              # Generated files (gitignored)
 │   ├── posts/
 │   ├── index.html
@@ -45,6 +52,7 @@ blog/
 ```
 
 ### Build Process Flow
+
 ```
 Markdown Posts → build.py → HTML + RSS + Sitemap → Git Push → GitHub Pages
 ```
@@ -54,19 +62,22 @@ Markdown Posts → build.py → HTML + RSS + Sitemap → Git Push → GitHub Pag
 ## Pull Requests & Tasks
 
 ### PR #1: DNS Configuration & Subdomain Setup
+
 **Priority:** Critical - Must complete before other PRs
 **Estimated Time:** 30 minutes
 
 #### Tasks
-- [ ] 1.1. Log into GoDaddy DNS management for victorgoico.com
+
+- [ ] 1.1. Log into SquareSpace DNS management for victorgoico.com
 - [ ] 1.2. Add CNAME record: `blog` pointing to `victorgoic0.github.io` (or your GitHub Pages domain)
 - [ ] 1.3. Verify DNS propagation (use dig or nslookup)
 - [ ] 1.4. Create `blog/CNAME` file with content: `blog.victorgoico.com`
 - [ ] 1.5. Test subdomain resolves correctly
 - [ ] 1.6. Document DNS setup in blog README.md
 
-**GoDaddy DNS Steps:**
-1. Go to GoDaddy DNS Management for victorgoico.com
+**SquareSpace DNS Steps:**
+
+1. Go to SquareSpace DNS Management for victorgoico.com
 2. Add new record:
    - Type: CNAME
    - Name: blog
@@ -77,12 +88,14 @@ Markdown Posts → build.py → HTML + RSS + Sitemap → Git Push → GitHub Pag
 ---
 
 ### PR #2: Project Structure & Build Script Core
+
 **Priority:** High
 **Estimated Time:** 2-3 hours
 
 #### Tasks
+
 - [ ] 2.1. Create `/blog` directory in repo root
-- [ ] 2.2. Set up directory structure (posts/, templates/, css/, output/)
+- [ ] 2.2. Set up directory structure (posts/, templates/, scss/, css/, output/)
 - [ ] 2.3. Create `.gitignore` to exclude output/ directory
 - [ ] 2.4. Create `requirements.txt` with dependencies (markdown, python-frontmatter, jinja2)
 - [ ] 2.5. Build `build.py` script skeleton with argument parsing
@@ -94,6 +107,7 @@ Markdown Posts → build.py → HTML + RSS + Sitemap → Git Push → GitHub Pag
 - [ ] 2.11. Add README.md with usage instructions
 
 **Dependencies:**
+
 ```txt
 markdown>=3.5
 python-frontmatter>=1.1.0
@@ -103,10 +117,16 @@ Jinja2>=3.1.2
 ---
 
 ### PR #3: HTML Templates & Clean Blog Design
+
 **Priority:** High
 **Estimated Time:** 3-4 hours
 
+**Design reference:** Use the designs in `designs/` as the guideline for styles, layout, and visual treatment when implementing templates and Sass stylesheets.
+
+**Styling approach:** Use Sass (not plain CSS) so we can maintain a consistent design system via variables for spacing, typography, and colors. Install whatever packages or tooling are needed for Sass compilation (e.g. `sass` npm package, or a Python Sass compiler); that is acceptable and should be done in this PR.
+
 #### Tasks
+
 - [ ] 3.1. Create `templates/base.html` with semantic HTML structure
 - [ ] 3.2. Add head section with meta tags placeholders
 - [ ] 3.3. Create navigation header (simple: Home, All Posts)
@@ -117,14 +137,16 @@ Jinja2>=3.1.2
 - [ ] 3.8. Create `templates/index.html` for blog homepage
 - [ ] 3.9. Add post list layout with excerpts
 - [ ] 3.10. Implement tag filtering UI
-- [ ] 3.11. Design `css/blog.css` with minimal, clean styling
-- [ ] 3.12. Use white/light background, dark text (#222)
-- [ ] 3.13. Add responsive typography (18-21px body text)
-- [ ] 3.14. Style code blocks with syntax highlighting
-- [ ] 3.15. Ensure mobile responsiveness
-- [ ] 3.16. Test templates render correctly with build script
+- [ ] 3.11. Set up Sass: install Sass compiler/package and add `scss/` with `_variables.scss` (design tokens) and `blog.scss` that compiles to `css/blog.css`
+- [ ] 3.12. Define Sass variables for colors (background, text, links), spacing, and typography (font stack, sizes, line-height) per Design Specs
+- [ ] 3.13. Implement minimal, clean styling using those variables; white/light background, dark text (#222)
+- [ ] 3.14. Add responsive typography (18-21px body text) via variables
+- [ ] 3.15. Style code blocks with syntax highlighting
+- [ ] 3.16. Ensure mobile responsiveness
+- [ ] 3.17. Test templates render correctly with build script
 
-**Design Specs:**
+**Design Specs (implement via Sass variables):**
+
 - Background: #ffffff or #fafafa
 - Text: #222222
 - Links: #0066cc (blue, underlined on hover)
@@ -136,10 +158,12 @@ Jinja2>=3.1.2
 ---
 
 ### PR #4: SEO, RSS Feed, and Sitemap Generation
+
 **Priority:** High
 **Estimated Time:** 2-3 hours
 
 #### Tasks
+
 - [ ] 4.1. Add SEO meta tags to base.html (title, description, keywords)
 - [ ] 4.2. Implement Open Graph tags for social sharing
 - [ ] 4.3. Add Twitter Card meta tags
@@ -157,6 +181,7 @@ Jinja2>=3.1.2
 - [ ] 4.15. Test sitemap validates
 
 **Structured Data Example:**
+
 ```json
 {
   "@context": "https://schema.org",
@@ -173,10 +198,12 @@ Jinja2>=3.1.2
 ---
 
 ### PR #5: Tags/Categories System
+
 **Priority:** Medium
 **Estimated Time:** 2 hours
 
 #### Tasks
+
 - [ ] 5.1. Extract tags from post frontmatter in build.py
 - [ ] 5.2. Build tag index (map tags to posts)
 - [ ] 5.3. Generate tag pages (optional) or use client-side filtering
@@ -189,10 +216,12 @@ Jinja2>=3.1.2
 ---
 
 ### PR #6: Google Analytics Integration
+
 **Priority:** Medium
 **Estimated Time:** 30 minutes
 
 #### Tasks
+
 - [ ] 6.1. Create Google Analytics 4 account
 - [ ] 6.2. Set up new property for blog.victorgoico.com
 - [ ] 6.3. Get tracking ID (G-XXXXXXXXXX)
@@ -202,24 +231,32 @@ Jinja2>=3.1.2
 - [ ] 6.7. Document analytics setup in README.md
 
 **GA4 Script:**
+
 ```html
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XXXXXXXXXX");
 </script>
 ```
 
 ---
 
 ### PR #7: GitHub Pages Deployment Setup
+
 **Priority:** High
 **Estimated Time:** 1 hour
 
 #### Tasks
+
 - [ ] 7.1. Create new repo `VictorGoic0-blog` or use separate branch
 - [ ] 7.2. Push blog code to GitHub
 - [ ] 7.3. Enable GitHub Pages in repo settings
@@ -232,12 +269,14 @@ Jinja2>=3.1.2
 ---
 
 ### PR #8: Portfolio Navigation Integration
+
 **Priority:** Medium
 **Estimated Time:** 30 minutes
 
 **Note:** Complete AFTER PR #1 (DNS) and PR #7 (Deployment) are done
 
 #### Tasks
+
 - [ ] 8.1. Open portfolio `index.html`
 - [ ] 8.2. Add "Blog" link to navigation menu
 - [ ] 8.3. Link to `https://blog.victorgoico.com`
@@ -247,24 +286,27 @@ Jinja2>=3.1.2
 - [ ] 8.7. Add back link from blog to portfolio (optional)
 
 **Code Change:**
+
 ```html
 <!-- In index.html nav -->
 <ul class="nav-links">
-    <li><a href="#featured">Featured</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="https://blog.victorgoico.com">Blog</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <li><a href="#featured">Featured</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#projects">Projects</a></li>
+  <li><a href="https://blog.victorgoico.com">Blog</a></li>
+  <li><a href="#contact">Contact</a></li>
 </ul>
 ```
 
 ---
 
 ### PR #9: Create First Blog Post & Documentation
+
 **Priority:** Medium
 **Estimated Time:** 1-2 hours (excluding writing time)
 
 #### Tasks
+
 - [ ] 9.1. Write first blog post in markdown
 - [ ] 9.2. Add proper frontmatter (title, date, tags, description)
 - [ ] 9.3. Test build.py generates HTML correctly
@@ -278,6 +320,7 @@ Jinja2>=3.1.2
 - [ ] 9.11. Deploy and test live
 
 **Sample Post Template:**
+
 ```markdown
 ---
 title: "My First Blog Post: Why I'm Building in Public"
@@ -302,6 +345,7 @@ More content...
 ## Deployment Workflow (Final State)
 
 ### Writing a New Post
+
 1. Create `posts/YYYY-MM-DD-slug.md`
 2. Add frontmatter and content
 3. Run `python build.py`
@@ -310,6 +354,7 @@ More content...
 6. GitHub Pages auto-deploys
 
 ### Build Script Usage
+
 ```bash
 # Generate all posts
 python build.py
@@ -326,18 +371,21 @@ python build.py --clean
 ## Future Enhancements (Not in Initial PRs)
 
 ### Phase 2 - Engagement
+
 - [ ] Add comments system (utterances or giscus)
 - [ ] Implement reading time estimation
 - [ ] Add "Related posts" section
 - [ ] Social share buttons
 
 ### Phase 3 - Discovery
+
 - [ ] Client-side search with lunr.js
 - [ ] Archive page by date
 - [ ] Popular posts widget
 - [ ] Newsletter signup integration
 
 ### Phase 4 - Experience
+
 - [ ] Dark mode toggle
 - [ ] Table of contents for long posts
 - [ ] Image optimization and lazy loading
@@ -346,6 +394,7 @@ python build.py --clean
 ---
 
 ## Success Metrics
+
 - Blog deployed and accessible at blog.victorgoico.com
 - First post published with proper SEO
 - RSS feed functional and validated
@@ -357,9 +406,9 @@ python build.py --clean
 ---
 
 ## Notes
+
 - Keep design simple and focused on readability
 - Prioritize content creation workflow efficiency
 - SEO optimization is critical from day one
 - Monitor analytics to understand what content resonates
 - Plan for cross-posting to Medium and LinkedIn after publishing
-
