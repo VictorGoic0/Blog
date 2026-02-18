@@ -68,22 +68,22 @@ Markdown Posts → build.py → HTML + RSS + Sitemap → Git Push → GitHub Pag
 
 #### Tasks
 
-- [ ] 1.1. Log into SquareSpace DNS management for victorgoico.com
-- [ ] 1.2. Add CNAME record: `blog` pointing to `victorgoic0.github.io` (or your GitHub Pages domain)
-- [ ] 1.3. Verify DNS propagation (use dig or nslookup)
-- [ ] 1.4. Create `blog/CNAME` file with content: `blog.victorgoico.com`
-- [ ] 1.5. Test subdomain resolves correctly
-- [ ] 1.6. Document DNS setup in blog README.md
+- [x] 1.1. Log into SquareSpace DNS management for victorgoico.com
+- [x] 1.2. Add CNAME record: `blog` pointing to `victorgoic0.github.io` (or your GitHub Pages domain)
+- [x] 1.3. Verify DNS propagation (use dig or nslookup)
+- [x] 1.4. Create `blog/CNAME` file with content: `blog.victorgoico.com`
+- [x] 1.5. Test subdomain resolves correctly
+- [x] 1.6. Document DNS setup in blog README.md
 
 **SquareSpace DNS Steps:**
 
 1. Go to SquareSpace DNS Management for victorgoico.com
-2. Add new record:
-   - Type: CNAME
-   - Name: blog
-   - Value: victorgoic0.github.io (or your GitHub username)
-   - TTL: 600 seconds (10 minutes)
-3. Save and wait 5-15 minutes for propagation
+2. In **Custom Records**, add a new record:
+   - **Type:** CNAME
+   - **Host:** `blog` (subdomain only)
+   - **Alias Data:** `victorgoic0.github.io` (or your GitHub Pages hostname)
+   - **TTL:** 30 minutes (SquareSpace’s minimum)
+3. Save and wait for propagation (often 5–15 minutes; can be longer)
 
 ---
 
