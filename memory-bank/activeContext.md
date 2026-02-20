@@ -2,18 +2,17 @@
 
 ## Current Focus
 
-- Memory Bank initialized from PRD. Next: start implementation per PR #2 (project structure and build script core).
-- PR #1 (DNS and CNAME) is done; CNAME exists at repo root. Repo is blog-only.
+- PR #4 complete. Next: PR #5 (tags/categories) or PR #6/#7.
+- PR #1–#3 done. Repo is blog-only.
 
 ## Recent Changes
 
-- PRD and README updated for blog-only repo (no portfolio in same repo; one CNAME per GitHub Pages repo).
-- Memory Bank created: projectbrief, productContext, systemPatterns, techContext, activeContext, progress.
+- **PR #4:** SEO: base.html meta (description, keywords block, canonical, Open Graph, Twitter Card), RSS link in head. Post template: canonical, og/twitter overrides, JSON-LD (BlogPosting) via build.py. build.py: SITE_URL, env.globals["site_url"], json_ld per post; generates feed.xml (RSS 2.0), sitemap.xml (urlset, lastmod, priority, changefreq), robots.txt (Allow /, Sitemap).
 
 ## Next Steps
 
-1. **PR #2:** Set up directory structure (posts/, templates/, scss/, css/, output/), .gitignore, requirements.txt, build.py skeleton with discovery and parsing, frontmatter, HTML generation, output writing, README usage.
-2. After PR #2: PR #3 (templates + Sass design), then PR #4 (SEO, RSS, sitemap), then remaining PRs per PRD order.
+1. **PR #5:** Tags/categories (extract, index, tag pages or filtering—filtering already in PR #3).
+2. Then PR #6 (GA4), #7 (deployment), #8 (portfolio nav), #9 (first post & docs).
 
 ## Active Decisions
 

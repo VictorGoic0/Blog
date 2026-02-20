@@ -1,0 +1,22 @@
+# Build output (generated on deploy via GitHub Actions; not committed)
+output/
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+
+# Sass (optional: uncomment if you prefer to not commit compiled CSS)
+# css/*.css
+# !css/blog.css
+
+# OS
+.DS_Store
+Thumbs.db

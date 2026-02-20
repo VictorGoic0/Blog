@@ -1,0 +1,354 @@
+@use "variables" as v;
+
+// --- Base ---
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: v.$font-size-base;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: v.$font-stack;
+  color: v.$color-text;
+  background: v.$color-bg;
+  line-height: v.$line-height-body;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: v.$color-link;
+  text-decoration: none;
+
+  &:hover {
+    color: v.$color-link-hover;
+    text-decoration: underline;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// --- Layout ---
+.site-header,
+.main-content,
+.site-footer {
+  width: 100%;
+  max-width: v.$content-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: v.$spacing-lg;
+  padding-right: v.$spacing-lg;
+}
+
+.main-content {
+  padding-top: v.$spacing-xl;
+  padding-bottom: v.$spacing-2xl;
+}
+
+// --- Header & Nav ---
+.site-header {
+  padding-top: v.$spacing-lg;
+  padding-bottom: v.$spacing-md;
+  border-bottom: 1px solid v.$color-border;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$spacing-md;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: v.$font-size-small;
+
+  a {
+    font-weight: 500;
+  }
+}
+
+// --- Footer ---
+.site-footer {
+  padding-top: v.$spacing-xl;
+  padding-bottom: v.$spacing-lg;
+  border-top: 1px solid v.$color-border;
+  font-size: v.$font-size-small;
+  color: v.$color-text-muted;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$spacing-md;
+  list-style: none;
+  margin: v.$spacing-sm 0 0;
+  padding: 0;
+
+  a:hover {
+    color: v.$color-link;
+  }
+}
+
+// --- Post (single) ---
+.post-header {
+  margin-bottom: v.$spacing-xl;
+}
+
+.post-title {
+  font-size: v.$font-size-h1;
+  line-height: v.$line-height-heading;
+  margin: 0 0 v.$spacing-sm;
+  font-weight: 700;
+}
+
+.post-meta {
+  font-size: v.$font-size-small;
+  color: v.$color-text-muted;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: v.$spacing-xs;
+
+  time {
+    font-style: normal;
+  }
+
+  .meta-sep {
+    user-select: none;
+  }
+
+  .tag-list {
+    display: inline-flex;
+  }
+}
+
+.post-description {
+  margin: v.$spacing-sm 0 0;
+  font-size: v.$font-size-small;
+  color: v.$color-text-muted;
+}
+
+.post-body {
+  font-size: 1rem;
+
+  > * + * {
+    margin-top: v.$spacing-md;
+  }
+
+  > * + h2,
+  > * + h3 {
+    margin-top: v.$spacing-xl;
+  }
+
+  h1, h2, h3 {
+    line-height: v.$line-height-heading;
+    font-weight: 600;
+  }
+
+  h1 { font-size: v.$font-size-h1; margin: v.$spacing-xl 0 v.$spacing-md; }
+  h2 { font-size: v.$font-size-h2; margin: v.$spacing-xl 0 v.$spacing-sm; }
+  h3 { font-size: v.$font-size-h3; margin: v.$spacing-lg 0 v.$spacing-sm; }
+
+  ul, ol {
+    padding-left: 1.5em;
+  }
+
+  li + li {
+    margin-top: v.$spacing-xs;
+  }
+
+  p {
+    margin: 0 0 v.$spacing-md;
+  }
+}
+
+// --- Code blocks ---
+.post-body pre,
+.post-body .codehilite {
+  margin: v.$spacing-lg 0;
+  padding: v.$spacing-md;
+  background: v.$color-code-bg;
+  border: 1px solid v.$color-code-border;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.post-body pre code,
+.post-body .codehilite code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.post-body code {
+  padding: 0.15em 0.4em;
+  background: v.$color-code-bg;
+  border: 1px solid v.$color-code-border;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.post-body pre code {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+// --- Tags (badges) ---
+.tag-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: v.$spacing-xs;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag-list a,
+.tag {
+  display: inline-block;
+  padding: v.$spacing-xs v.$spacing-sm;
+  font-size: 0.8rem;
+  background: v.$color-code-bg;
+  border: 1px solid v.$color-code-border;
+  border-radius: 4px;
+  color: v.$color-text;
+  text-decoration: none;
+
+  &:hover {
+    background: v.$color-border;
+    color: v.$color-link;
+    text-decoration: none;
+  }
+}
+
+// --- Index (post list) ---
+.index-title {
+  font-size: v.$font-size-h1;
+  margin: 0 0 v.$spacing-xl;
+  font-weight: 700;
+}
+
+.tag-filter {
+  margin-bottom: v.$spacing-xl;
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$spacing-sm;
+  align-items: center;
+}
+
+.tag-filter-label {
+  font-size: v.$font-size-small;
+  color: v.$color-text-muted;
+  margin: 0;
+}
+
+.tag-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$spacing-sm;
+}
+
+.tag-filter-buttons button {
+  font: inherit;
+  font-size: v.$font-size-small;
+  padding: v.$spacing-xs v.$spacing-sm;
+  background: v.$color-bg-alt;
+  border: 1px solid v.$color-border;
+  border-radius: 4px;
+  color: v.$color-text;
+  cursor: pointer;
+
+  &:hover {
+    background: v.$color-code-bg;
+  }
+
+  &.active {
+    background: v.$color-link;
+    border-color: v.$color-link;
+    color: white;
+  }
+}
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list-item {
+  padding: v.$spacing-lg 0;
+  border-bottom: 1px solid v.$color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.post-list-title {
+  font-size: v.$font-size-h2;
+  margin: 0 0 v.$spacing-xs;
+  font-weight: 600;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: v.$color-link;
+      text-decoration: underline;
+    }
+  }
+}
+
+.post-list-meta {
+  font-size: v.$font-size-small;
+  color: v.$color-text-muted;
+  margin: 0 0 v.$spacing-sm;
+}
+
+.post-list-excerpt {
+  font-size: v.$font-size-small;
+  color: v.$color-text-muted;
+  margin: 0;
+  line-height: v.$line-height-body;
+}
+
+// --- Responsive ---
+@media (max-width: v.$breakpoint-mobile) {
+  html {
+    font-size: v.$font-size-base-mobile;
+  }
+
+  .site-header,
+  .main-content,
+  .site-footer {
+    padding-left: v.$spacing-md;
+    padding-right: v.$spacing-md;
+  }
+
+  .main-content {
+    padding-top: v.$spacing-lg;
+    padding-bottom: v.$spacing-xl;
+  }
+
+  .post-title {
+    font-size: 1.65rem;
+  }
+}

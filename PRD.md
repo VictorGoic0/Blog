@@ -95,16 +95,16 @@ Markdown Posts → build.py → HTML + RSS + Sitemap → Git Push → GitHub Pag
 
 #### Tasks
 
-- [ ] 2.1. Set up directory structure at repo root (posts/, templates/, scss/, css/, output/)
-- [ ] 2.2. Create `.gitignore` to exclude output/ directory
-- [ ] 2.3. Create `requirements.txt` with dependencies (markdown, python-frontmatter, jinja2)
-- [ ] 2.4. Build `build.py` script skeleton with argument parsing
-- [ ] 2.5. Implement markdown file discovery and parsing
-- [ ] 2.6. Add frontmatter extraction (title, date, tags, description)
-- [ ] 2.7. Implement basic HTML generation from markdown
-- [ ] 2.8. Add file writing to output/ directory
-- [ ] 2.9. Test with sample markdown post
-- [ ] 2.10. Add README.md with usage instructions
+- [x] 2.1. Set up directory structure at repo root (posts/, templates/, scss/, css/, output/)
+- [x] 2.2. Create `.gitignore` to exclude output/ directory
+- [x] 2.3. Create `requirements.txt` with dependencies (markdown, python-frontmatter, jinja2)
+- [x] 2.4. Build `build.py` script skeleton with argument parsing
+- [x] 2.5. Implement markdown file discovery and parsing
+- [x] 2.6. Add frontmatter extraction (title, date, tags, description)
+- [x] 2.7. Implement basic HTML generation from markdown
+- [x] 2.8. Add file writing to output/ directory
+- [x] 2.9. Test with sample markdown post
+- [x] 2.10. Add README.md with usage instructions
 
 **Dependencies:**
 
@@ -127,23 +127,23 @@ Jinja2>=3.1.2
 
 #### Tasks
 
-- [ ] 3.1. Create `templates/base.html` with semantic HTML structure
-- [ ] 3.2. Add head section with meta tags placeholders
-- [ ] 3.3. Create navigation header (simple: Home, All Posts)
-- [ ] 3.4. Add footer with copyright and social links
-- [ ] 3.5. Create `templates/post.html` extending base template
-- [ ] 3.6. Add article structure with proper semantic tags
-- [ ] 3.7. Include metadata display (date, tags, read time)
-- [ ] 3.8. Create `templates/index.html` for blog homepage
-- [ ] 3.9. Add post list layout with excerpts
-- [ ] 3.10. Implement tag filtering UI
-- [ ] 3.11. Set up Sass: install Sass compiler/package and add `scss/` with `_variables.scss` (design tokens) and `blog.scss` that compiles to `css/blog.css`
-- [ ] 3.12. Define Sass variables for colors (background, text, links), spacing, and typography (font stack, sizes, line-height) per Design Specs
-- [ ] 3.13. Implement minimal, clean styling using those variables; white/light background, dark text (#222)
-- [ ] 3.14. Add responsive typography (18-21px body text) via variables
-- [ ] 3.15. Style code blocks with syntax highlighting
-- [ ] 3.16. Ensure mobile responsiveness
-- [ ] 3.17. Test templates render correctly with build script
+- [x] 3.1. Create `templates/base.html` with semantic HTML structure
+- [x] 3.2. Add head section with meta tags placeholders
+- [x] 3.3. Create navigation header (simple: Home, All Posts)
+- [x] 3.4. Add footer with copyright and social links
+- [x] 3.5. Create `templates/post.html` extending base template
+- [x] 3.6. Add article structure with proper semantic tags
+- [x] 3.7. Include metadata display (date, tags, read time)
+- [x] 3.8. Create `templates/index.html` for blog homepage
+- [x] 3.9. Add post list layout with excerpts
+- [x] 3.10. Implement tag filtering UI
+- [x] 3.11. Set up Sass: install Sass compiler/package and add `scss/` with `_variables.scss` (design tokens) and `blog.scss` that compiles to `css/blog.css`
+- [x] 3.12. Define Sass variables for colors (background, text, links), spacing, and typography (font stack, sizes, line-height) per Design Specs
+- [x] 3.13. Implement minimal, clean styling using those variables; white/light background, dark text (#222)
+- [x] 3.14. Add responsive typography (18-21px body text) via variables
+- [x] 3.15. Style code blocks with syntax highlighting
+- [x] 3.16. Ensure mobile responsiveness
+- [x] 3.17. Test templates render correctly with build script
 
 **Design Specs (implement via Sass variables):**
 
@@ -164,21 +164,21 @@ Jinja2>=3.1.2
 
 #### Tasks
 
-- [ ] 4.1. Add SEO meta tags to base.html (title, description, keywords)
-- [ ] 4.2. Implement Open Graph tags for social sharing
-- [ ] 4.3. Add Twitter Card meta tags
-- [ ] 4.4. Include canonical URL for each post
-- [ ] 4.5. Add JSON-LD structured data for articles
-- [ ] 4.6. Implement RSS feed generation in build.py
-- [ ] 4.7. Generate feed.xml with RSS 2.0 format
-- [ ] 4.8. Include post title, description, link, pubDate
-- [ ] 4.9. Add RSS link to base.html head
-- [ ] 4.10. Implement sitemap.xml generation
-- [ ] 4.11. Include all post URLs with lastmod dates
-- [ ] 4.12. Add priority and changefreq values
-- [ ] 4.13. Create robots.txt for SEO crawling
-- [ ] 4.14. Test RSS feed validates (use W3C Feed Validator)
-- [ ] 4.15. Test sitemap validates
+- [x] 4.1. Add SEO meta tags to base.html (title, description, keywords)
+- [x] 4.2. Implement Open Graph tags for social sharing
+- [x] 4.3. Add Twitter Card meta tags
+- [x] 4.4. Include canonical URL for each post
+- [x] 4.5. Add JSON-LD structured data for articles
+- [x] 4.6. Implement RSS feed generation in build.py
+- [x] 4.7. Generate feed.xml with RSS 2.0 format
+- [x] 4.8. Include post title, description, link, pubDate
+- [x] 4.9. Add RSS link to base.html head
+- [x] 4.10. Implement sitemap.xml generation
+- [x] 4.11. Include all post URLs with lastmod dates
+- [x] 4.12. Add priority and changefreq values
+- [x] 4.13. Create robots.txt for SEO crawling
+- [x] 4.14. Test RSS feed validates (use W3C Feed Validator)
+- [x] 4.15. Test sitemap validates
 
 **Structured Data Example:**
 
@@ -327,7 +327,7 @@ Jinja2>=3.1.2
 title: "My First Blog Post: Why I'm Building in Public"
 date: 2026-01-15
 tags: [Career, Development, AI]
-description: "Sharing my journey as a software engineer and why I'm documenting my path in public"
+description: "Lorem ipsum lorem ipsum"
 ---
 
 Your compelling intro here...

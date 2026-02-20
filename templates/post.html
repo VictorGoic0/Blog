@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block meta_description %}{{ post.description or post.excerpt }}{% endblock %}
+{% block canonical_url %}{{ site_url }}/{{ post.url }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ post.title }} | blog.victorgoico.com{% endblock %}
+{% block og_description %}{{ post.description or post.excerpt }}{% endblock %}
+{% block og_url %}{{ site_url }}/{{ post.url }}{% endblock %}
+{% block og_image %}{% if post.get('og_image') %}<meta property="og:image" content="{{ post.og_image }}">{% endif %}{% endblock %}
+{% block twitter_title %}{{ post.title }} | blog.victorgoico.com{% endblock %}
+{% block twitter_description %}{{ post.description or post.excerpt }}{% endblock %}
+{% block content %}
+<article>
+    <header class="post-header">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <div class="post-meta">
+            <span><time datetime="{{ post.date_iso }}">{{ post.date_display }}</time></span>
+            <span class="meta-sep">·</span>
+            <span>{{ post.read_time_min }} min read</span>
+            {% if post.tags %}
+            <span class="meta-sep">·</span>
+            <ul class="tag-list" aria-label="Tags">
+                {% for tag in post.tags %}
+                <li><a href="/?tag={{ tag | urlencode }}">{{ tag }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% if post.description %}<p class="post-description">{{ post.description }}</p>{% endif %}
+    </header>
+    <div class="post-body">
+        {{ post.html_content | safe }}
+    </div>
+</article>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script type="application/ld+json">{{ post.json_ld | safe }}</script>
+{% endblock %}

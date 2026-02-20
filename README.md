@@ -20,4 +20,41 @@ The blog is served at the `blog` subdomain (blog.victorgoico.com). To point it a
 
 ## Build and deploy
 
-(To be added with PR #2 and later: how to run the build script, Sass compile, and deploy to GitHub Pages.)
+### Prerequisites
+
+- Python 3
+- Node.js and npm (for compiling Sass to CSS)
+
+### Build the site
+
+```bash
+# 1. Compile Sass (design tokens and layout in scss/) to css/blog.css
+npm install
+npm run build:css
+
+# 2. Python build: HTML from Markdown, copies css into output/
+python3 -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+# Generate all posts and index
+python build.py
+
+# Build a single post (and refresh index)
+python build.py posts/2026-02-18-hello-world.md
+
+# Remove output/ and rebuild from scratch
+python build.py --clean
+```
+
+Generated files go into **`output/`**: `index.html`, `posts/<slug>.html`, `css/blog.css`. This folder is gitignored, so it may be **hidden in your editor’s file explorer**; the files are still there. To confirm: `ls output/` in the terminal. We don’t commit `output/`: deployment (e.g. GitHub Actions in PR #7) will run the build and deploy that folder.
+
+**Preview locally:** Serve the built site so CSS and links work, then open in your browser:
+
+```bash
+python -m http.server 8080 --directory output
+```
+
+Then open **http://localhost:8080**. The build script copies the compiled stylesheet into `output/css/` so the site works when GitHub Pages is set to serve from `output/`. Ensure `CNAME` is present in the deployed root.
+
+**Sass:** Edit `scss/_variables.scss` for design tokens and `scss/blog.scss` for layout and components. Run `npm run build:css` after changes; use `npm run watch:css` during development.
