@@ -259,13 +259,13 @@ Jinja2>=3.1.2
 
 #### Tasks
 
-- [ ] 7.1. Push blog code to this repo
-- [ ] 7.2. Enable GitHub Pages in repo settings
-- [ ] 7.3. Set source to main branch (root or output folder, per build setup)
-- [ ] 7.4. Ensure CNAME is at repo root or in deployed output so GitHub Pages serves the custom domain
-- [ ] 7.5. Test blog.victorgoico.com loads correctly
-- [ ] 7.6. Set up automatic deployment workflow (optional)
-- [ ] 7.7. Document deployment process in README.md
+- [x] 7.1. Push blog code to this repo
+- [x] 7.2. Enable GitHub Pages in repo settings
+- [x] 7.3. Set source to GitHub Actions (workflow deploys output/)
+- [x] 7.4. Ensure CNAME is at repo root or in deployed output so GitHub Pages serves the custom domain
+- [x] 7.5. Test blog.victorgoico.com loads correctly
+- [x] 7.6. Set up automatic deployment workflow (.github/workflows/deploy.yml)
+- [x] 7.7. Document deployment process in README.md
 
 ---
 
