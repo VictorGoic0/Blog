@@ -37,5 +37,5 @@ Build a custom markdown-based blog system for blog.victorgoico.com. Full control
 
 ## Source of Truth
 
-- **PRD:** `PRD.md` — full task breakdown (PRs #1–#8), design specs, success metrics.
+- **PRD:** Moved to `old-docs/` — all 8 PRs complete. Memory Bank is now the primary context.
 - **Memory Bank:** This folder — project context for AI and handoffs.

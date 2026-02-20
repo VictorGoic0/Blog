@@ -4,6 +4,7 @@
 {% block content %}
 <h1 class="index-title">Blog</h1>
 
+{# tag filter + all-tags section commented out — re-enable with tag filter in phase 2
 {% if all_tags %}
 <div class="tag-filter" role="group" aria-label="Filter by tag">
     <span class="tag-filter-label">Filter:</span>
@@ -23,25 +24,29 @@
     </ul>
 </section>
 {% endif %}
+#}
 
 <ul class="post-list">
 {% for post in posts %}
-    <li class="post-list-item" data-tags="{{ post.tags | join(' ') }}">
+    <li class="post-list-item">
         <h2 class="post-list-title"><a href="/{{ post.url }}">{{ post.title }}</a></h2>
         <p class="post-list-meta">
             <time datetime="{{ post.date_iso }}">{{ post.date_display }}</time>
             <span aria-hidden="true"> · </span>
             {{ post.read_time_min }} min read
+            {# per-item tag display commented out — re-enable with tag filter in phase 2
             {% if post.tags %}
             <span aria-hidden="true"> · </span>
             {% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% if not loop.last %} {% endif %}{% endfor %}
             {% endif %}
+            #}
         </p>
         {% if post.excerpt %}<p class="post-list-excerpt">{{ post.excerpt }}</p>{% endif %}
     </li>
 {% endfor %}
 </ul>
 
+{# tag filter JS commented out — re-enable with tag filter in phase 2
 <script>
 (function() {
   var buttons = document.querySelectorAll('.tag-filter-btn');
@@ -73,4 +78,5 @@
   });
 })();
 </script>
+#}
 {% endblock %}

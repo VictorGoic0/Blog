@@ -56,8 +56,34 @@ img {
 // --- Header & Nav ---
 .site-header {
   padding-top: v.$spacing-lg;
-  padding-bottom: v.$spacing-md;
-  border-bottom: 1px solid v.$color-border;
+  padding-bottom: v.$spacing-lg;
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: v.$color-text;
+
+  a {
+    color: v.$color-text;
+    text-decoration: none;
+
+    &:hover {
+      color: v.$color-text;
+      text-decoration: underline;
+    }
+  }
+}
+
+.site-logo {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .site-nav {
@@ -127,6 +153,16 @@ img {
 
   .tag-list {
     display: inline-flex;
+  }
+}
+
+.author-link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
   }
 }
 

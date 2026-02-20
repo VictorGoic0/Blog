@@ -12,11 +12,13 @@
 {% block content %}
 <article>
     <header class="post-header">
-        <h1 class="post-title">{{ post.title }}</h1>
         <div class="post-meta">
-            <span><time datetime="{{ post.date_iso }}">{{ post.date_display }}</time></span>
+            <time datetime="{{ post.date_iso }}">{{ post.date_display }}</time>
             <span class="meta-sep">·</span>
-            <span>{{ post.read_time_min }} min read</span>
+            By <a href="https://victorgoico.com" rel="noopener noreferrer" target="_blank" class="author-link">Victor M. Goico</a>
+            <span class="meta-sep">·</span>
+            {{ post.read_time_min }} min read
+            {# tags commented out — re-enable with tag filter in phase 2
             {% if post.tags %}
             <span class="meta-sep">·</span>
             <ul class="tag-list" aria-label="Tags">
@@ -25,7 +27,9 @@
                 {% endfor %}
             </ul>
             {% endif %}
+            #}
         </div>
+        <h1 class="post-title">{{ post.title }}</h1>
         {% if post.description %}<p class="post-description">{{ post.description }}</p>{% endif %}
     </header>
     <div class="post-body">

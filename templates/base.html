@@ -36,12 +36,15 @@
 </head>
 <body>
     <header class="site-header">
-        <nav aria-label="Main">
-            <ul class="site-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/">All Posts</a></li>
-            </ul>
-        </nav>
+        <div class="site-header-inner">
+            <a href="/" class="site-logo">GOICOLOG_</a>
+            <nav aria-label="Main">
+                <ul class="site-nav">
+                    <li><a href="/">Articles</a></li>
+                    <li><a href="https://victorgoico.com/#about" rel="noopener noreferrer" target="_blank">About</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main class="main-content">
         {% block content %}{% endblock %}
@@ -49,9 +52,9 @@
     <footer class="site-footer">
         <p>&copy; {{ current_year }} Victor Goico</p>
         <ul class="footer-links" aria-label="Social links">
-            <li><a href="https://github.com/victorgoic0" rel="noopener noreferrer" target="_blank">GitHub</a></li>
-            <li><a href="https://twitter.com" rel="noopener noreferrer" target="_blank">Twitter</a></li>
-            <li><a href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/VictorGoic0" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+            <li><a href="https://twitter.com/GoicoBuild" rel="noopener noreferrer" target="_blank">Twitter</a></li>
+            <li><a href="https://www.linkedin.com/in/victor-m-goico/" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
         </ul>
     </footer>
     {% block scripts %}{% endblock %}

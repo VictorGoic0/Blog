@@ -276,17 +276,17 @@ Jinja2>=3.1.2
 
 #### Tasks
 
-- [ ] 8.1. Write first blog post in markdown
-- [ ] 8.2. Add proper frontmatter (title, date, tags, description)
-- [ ] 8.3. Test build.py generates HTML correctly
-- [ ] 8.4. Review rendered post for formatting issues
-- [ ] 8.5. Check SEO meta tags render correctly
-- [ ] 8.6. Verify RSS feed includes new post
-- [ ] 8.7. Update sitemap includes new post URL
-- [ ] 8.8. Create usage documentation in README.md
-- [ ] 8.9. Document content creation workflow
-- [ ] 8.10. Add markdown syntax guide for reference
-- [ ] 8.11. Deploy and test live
+- [x] 8.1. Write first blog post in markdown
+- [x] 8.2. Add proper frontmatter (title, date, tags, description)
+- [x] 8.3. Test build.py generates HTML correctly
+- [x] 8.4. Review rendered post for formatting issues
+- [x] 8.5. Check SEO meta tags render correctly
+- [x] 8.6. Verify RSS feed includes new post
+- [x] 8.7. Update sitemap includes new post URL
+- [x] 8.8. Create usage documentation in README.md
+- [x] 8.9. Document content creation workflow
+- [x] 8.10. Add markdown syntax guide for reference
+- [x] 8.11. Deploy and test live
 
 **Sample Post Template:**
 

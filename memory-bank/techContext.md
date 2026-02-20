@@ -36,5 +36,5 @@ Sass: add as needed (e.g. npm `sass` or build-step dependency).
 
 ## Directory Layout (Reference)
 
-- `build.py`, `requirements.txt`, `CNAME`, `README.md`, `.gitignore` at root.
-- `posts/`, `templates/`, `scss/`, `css/`, `output/` at root. `designs/` for design reference.
+- `build.py`, `requirements.txt`, `CNAME`, `README.md`, `.gitignore`, `package.json`, `package-lock.json` at root.
+- `posts/`, `templates/`, `scss/`, `css/`, `output/` at root. `designs/` for design reference. `.github/workflows/deploy.yml` for CI/CD. `old-docs/` for archived PRD.

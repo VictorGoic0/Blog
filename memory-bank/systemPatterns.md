@@ -10,7 +10,7 @@
 
 - **Repo boundary:** Blog-only repo so GitHub Pages can use one CNAME (blog.victorgoico.com). Portfolio is a separate repo.
 - **Content format:** Markdown + YAML frontmatter (title, date, tags, description). No CMS.
-- **Output:** Generated files in `output/` (gitignored). CNAME must be at repo root or copied into output so Pages serves the custom domain.
+- **Output:** Generated files in `output/` (gitignored). Workflow copies CNAME into output/ before deploy (`cp CNAME output/`).
 - **Tags:** Extracted in build; tag index in build script. Filtering on index (client-side or tag pages) per PR #5.
 
 ## Component Relationships
@@ -24,10 +24,15 @@ CNAME       →  (in repo root or output)  →  GitHub Pages custom domain
 
 - **build.py:** Reads `posts/`, uses `templates/`, writes `output/`. Emits RSS and sitemap.
 - **templates:** base.html (layout, head, nav, footer); post.html (article); index.html (post list, tag filter).
-- **Design:** `designs/` is reference only; implementation follows PRD design specs via Sass variables.
+- **Design:** `designs/` is reference only; implementation follows design specs via Sass variables in `scss/_variables.scss`.
+- **Deployment:** GitHub Actions (.github/workflows/deploy.yml) triggers on push to master. Builds Sass + Python, copies CNAME, deploys output/ to Pages via actions/deploy-pages.
 
 ## Design Specs (Implementation)
 
-- Background: #ffffff or #fafafa. Text: #222222. Links: #0066cc, underlined on hover.
-- Font: system fonts or Inter/Roboto. Max width: 680–720px. Line height: 1.6–1.8. Generous margins/padding.
-- Code blocks: syntax highlighting. Mobile responsive.
+- Background: #fafafa. Text: #222222. Links: #0066cc, underlined on hover.
+- Font: Inter + system stack. Max width: 700px. Line height: 1.7. Base font: 18px.
+- Code blocks: monospace, #f5f5f5 background with border. Mobile responsive.
+- Header: `.site-header-inner` flex row — logo (`GOICOLOG_`) left, nav right. Color inherited from `.site-header-inner` (black). No border-bottom.
+- Nav links: `Articles` (links to `/`), `About` (links to `victorgoico.com/#about`, new tab). All black.
+- Post meta order: `date · By [Author] · N min read` — appears above `<h1>`. Author links to `victorgoico.com`.
+- Tag filter UI: commented out in templates pending redesign Phase 2. Build still generates tag data.

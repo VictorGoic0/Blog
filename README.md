@@ -1,22 +1,23 @@
 # Blog (blog.victorgoico.com)
 
-Custom markdown-based blog built with a Python script, Jinja2 templates, and Sass. Deployed via GitHub Pages. This repo is dedicated to the blog only (one CNAME per GitHub Pages repo; portfolio uses a separate repo).
+Custom markdown-based blog built with a Python script, Jinja2 templates, and Sass. Deployed via GitHub Pages at blog.victorgoico.com.
 
-## DNS setup
+## Writing posts
 
-The blog is served at the `blog` subdomain (blog.victorgoico.com). To point it at GitHub Pages:
+### Markdown and HTML
 
-1. In **SquareSpace DNS** for the root domain (victorgoico.com), open **Custom Records** and add:
-   - **Type:** CNAME
-   - **Host:** `blog`
-   - **Alias Data:** `victorgoic0.github.io` (or this repo’s GitHub Pages hostname)
-   - **TTL:** 30 minutes (or minimum available)
+Posts are written in Markdown. You can also use raw HTML inline — the Markdown parser passes it through untouched.
 
-2. The repo contains `CNAME` at the root with the custom domain. That file must be present in the deployed output root so GitHub Pages can serve the site on the subdomain.
+| What you want | Markdown | HTML equivalent |
+|---|---|---|
+| Heading | `## My Heading` → `<h2>` | `<h2>My Heading</h2>` |
+| Bold | `**bold**` | `<strong>bold</strong>` |
+| Image | `![alt](url)` | `<img src="url" alt="alt">` |
+| Link | `[text](url)` | `<a href="url">text</a>` |
 
-3. After saving, allow time for DNS propagation (often 5–15 minutes; sometimes longer). Verify with:
-   - `dig blog.victorgoico.com CNAME`
-   - or `nslookup blog.victorgoico.com`
+Both produce identical HTML output — `##` compiles to exactly `<h2>`, so semantic HTML and SEO are not affected by which you use.
+
+**Gotcha:** if you open a block-level HTML tag (e.g. `<div>`, `<section>`), Markdown stops processing inside it. Inline HTML tags (e.g. `<img>`, `<strong>`, `<span>`) inside a Markdown paragraph work fine.
 
 ## Build and deploy
 
@@ -41,13 +42,13 @@ pip install -r requirements.txt
 python build.py
 
 # Build a single post (and refresh index)
-python build.py posts/2026-02-18-hello-world.md
+python build.py posts/2026-02-20-why-is-bitcoin-king-part-one.md
 
 # Remove output/ and rebuild from scratch
 python build.py --clean
 ```
 
-Generated files go into **`output/`**: `index.html`, `posts/<slug>.html`, `css/blog.css`. This folder is gitignored, so it may be **hidden in your editor’s file explorer**; the files are still there. To confirm: `ls output/` in the terminal. We don’t commit `output/`: deployment (e.g. GitHub Actions in PR #7) will run the build and deploy that folder.
+Generated files go into **`output/`**: `index.html`, `posts/<slug>.html`, `css/blog.css`. This folder is gitignored, so it may be **hidden in your editor's file explorer**; the files are still there. To confirm: `ls output/` in the terminal. We don't commit `output/`: the GitHub Actions workflow builds and deploys it on every push to `master`.
 
 **Preview locally:** Serve the built site so CSS and links work, then open in your browser:
 
@@ -55,6 +56,23 @@ Generated files go into **`output/`**: `index.html`, `posts/<slug>.html`, `css/b
 python -m http.server 8080 --directory output
 ```
 
-Then open **http://localhost:8080**. The build script copies the compiled stylesheet into `output/css/` so the site works when GitHub Pages is set to serve from `output/`. Ensure `CNAME` is present in the deployed root.
+Then open **http://localhost:8080**.
 
 **Sass:** Edit `scss/_variables.scss` for design tokens and `scss/blog.scss` for layout and components. Run `npm run build:css` after changes; use `npm run watch:css` during development.
+
+### Deployment (GitHub Actions)
+
+Every push to `master` automatically builds and deploys the site. The workflow (`.github/workflows/deploy.yml`):
+
+1. Compiles Sass → `css/blog.css`
+2. Runs `python build.py` → generates `output/` (HTML, CSS, feed.xml, sitemap.xml, robots.txt, CNAME)
+3. Deploys `output/` to GitHub Pages
+
+You can also trigger a deploy manually from the **Actions** tab → **Deploy to GitHub Pages** → **Run workflow**.
+
+### Google Analytics (GA4)
+
+1. In GA4: **Admin** (gear) → select your **Property** → **Data streams** → click your **Web** stream.
+2. Copy the **Measurement ID** (e.g. `G-XXXXXXXXXX`).
+3. In `build.py`, set `GA4_MEASUREMENT_ID = "G-XXXXXXXXXX"`. Leave as `""` to disable.
+4. Rebuild and deploy. Verify in GA4 under **Reports → Realtime**.
