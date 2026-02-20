@@ -127,6 +127,7 @@ def extract_post(path: Path, md: markdown.Markdown) -> dict:
         "title": title,
         "date_iso": date_obj.strftime("%Y-%m-%d"),
         "date_display": date_obj.strftime("%b %d, %Y"),
+        "date_short": date_obj.strftime("%y.%m.%d"),
         "tags": list(tags),
         "description": description,
         "excerpt": excerpt,

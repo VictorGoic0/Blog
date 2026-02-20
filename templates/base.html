@@ -34,7 +34,7 @@
     </script>
     {% endif %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
     <header class="site-header">
         <div class="site-header-inner">
             <a href="/" class="site-logo">GOICOLOG_</a>
@@ -46,7 +46,7 @@
             </nav>
         </div>
     </header>
-    <main class="main-content">
+    <main class="main-content {% block main_class %}{% endblock %}">
         {% block content %}{% endblock %}
     </main>
     <footer class="site-footer">
