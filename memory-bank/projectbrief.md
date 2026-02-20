@@ -37,5 +37,5 @@ Build a custom markdown-based blog system for blog.victorgoico.com. Full control
 
 ## Source of Truth
 
-- **PRD:** `PRD.md` — full task breakdown (PRs #1–#9), design specs, success metrics.
+- **PRD:** `PRD.md` — full task breakdown (PRs #1–#8), design specs, success metrics.
 - **Memory Bank:** This folder — project context for AI and handoffs.

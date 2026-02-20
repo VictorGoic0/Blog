@@ -269,24 +269,24 @@ Jinja2>=3.1.2
 
 ---
 
-### PR #9: Create First Blog Post & Documentation
+### PR #8: Create First Blog Post & Documentation
 
 **Priority:** Medium
 **Estimated Time:** 1-2 hours (excluding writing time)
 
 #### Tasks
 
-- [ ] 9.1. Write first blog post in markdown
-- [ ] 9.2. Add proper frontmatter (title, date, tags, description)
-- [ ] 9.3. Test build.py generates HTML correctly
-- [ ] 9.4. Review rendered post for formatting issues
-- [ ] 9.5. Check SEO meta tags render correctly
-- [ ] 9.6. Verify RSS feed includes new post
-- [ ] 9.7. Update sitemap includes new post URL
-- [ ] 9.8. Create usage documentation in README.md
-- [ ] 9.9. Document content creation workflow
-- [ ] 9.10. Add markdown syntax guide for reference
-- [ ] 9.11. Deploy and test live
+- [ ] 8.1. Write first blog post in markdown
+- [ ] 8.2. Add proper frontmatter (title, date, tags, description)
+- [ ] 8.3. Test build.py generates HTML correctly
+- [ ] 8.4. Review rendered post for formatting issues
+- [ ] 8.5. Check SEO meta tags render correctly
+- [ ] 8.6. Verify RSS feed includes new post
+- [ ] 8.7. Update sitemap includes new post URL
+- [ ] 8.8. Create usage documentation in README.md
+- [ ] 8.9. Document content creation workflow
+- [ ] 8.10. Add markdown syntax guide for reference
+- [ ] 8.11. Deploy and test live
 
 **Sample Post Template:**
 

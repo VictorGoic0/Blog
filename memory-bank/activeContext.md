@@ -2,17 +2,18 @@
 
 ## Current Focus
 
-- PR #6 complete. Next: PR #7 (deployment) or PR #9 (first post & docs).
-- PR #1–#5 done. Repo is blog-only.
+- PR #6 complete. Next: PR #7 (deployment) or PR #8 (first post & docs).
+- PR #1–#6 done. Repo is blog-only.
 
 ## Recent Changes
 
-- **PR #6:** GA4 tracking code in base.html (gated by GA4_MEASUREMENT_ID in build.py); README analytics section. PR #8 removed from PRD (not needed).
+- **PR numbering:** Former PR #9 (First post & documentation) renumbered to PR #8. All PRD and memory-bank references updated.
+- **PR #6:** GA4 tracking code in base.html (gated by GA4_MEASUREMENT_ID in build.py); README analytics section.
 
 ## Next Steps
 
 1. **PR #7:** GitHub Pages deployment (Actions workflow, CNAME in output).
-2. **PR #9:** First post & documentation.
+2. **PR #8:** First post & documentation.
 
 ## Active Decisions
 

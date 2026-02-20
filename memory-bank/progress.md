@@ -20,11 +20,11 @@
 | #5   | Tags/categories                    | Done     |
 | #6   | Google Analytics 4                 | Done     |
 | #7   | GitHub Pages deployment            | Not started |
-| #9   | First post & documentation         | Not started |
+| #8   | First post & documentation         | Not started |
 
 ## Current Status
 
-- **Phase:** GA4 done. Ready for PR #7 (deployment) or #9 (first post & docs).
+- **Phase:** GA4 done. Ready for PR #7 (deployment) or PR #8 (first post & docs).
 - **Blocker:** None. Live site after PR #7 and deployment config.
 
 ## Known Issues

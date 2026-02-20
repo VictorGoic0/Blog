@@ -8,7 +8,7 @@
 - **Markdown:** `markdown` library (e.g. >=3.5).
 - **Styles:** Sass; compile to CSS (e.g. `sass` npm package or equivalent). Output: `css/blog.css`.
 - **Hosting:** GitHub Pages. Domain: blog.victorgoico.com (CNAME; DNS at SquareSpace).
-- **Analytics:** Google Analytics 4 (G-XXXXXXXXXX in base.html).
+- **Analytics:** Google Analytics 4. Measurement ID set in `build.py` (`GA4_MEASUREMENT_ID`); gtag script in base.html when ID is set.
 
 ## Development Setup
 
