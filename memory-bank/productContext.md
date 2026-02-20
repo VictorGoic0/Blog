@@ -33,4 +33,4 @@
 - Blog live at blog.victorgoico.com.
 - First post published with proper SEO.
 - RSS feed valid; GA4 tracking; new post publishable in &lt; 5 minutes.
-- Portfolio repo nav links to blog; SEO meta tags render correctly.
+- SEO meta tags render correctly.

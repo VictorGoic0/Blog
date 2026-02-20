@@ -204,14 +204,14 @@ Jinja2>=3.1.2
 
 #### Tasks
 
-- [ ] 5.1. Extract tags from post frontmatter in build.py
-- [ ] 5.2. Build tag index (map tags to posts)
-- [ ] 5.3. Generate tag pages (optional) or use client-side filtering
-- [ ] 5.4. Add tag display to post template
-- [ ] 5.5. Style tags as clickable badges
-- [ ] 5.6. Implement tag filtering on index page
-- [ ] 5.7. Add "All tags" view to index page
-- [ ] 5.8. Test tag filtering works correctly
+- [x] 5.1. Extract tags from post frontmatter in build.py
+- [x] 5.2. Build tag index (map tags to posts)
+- [x] 5.3. Generate tag pages (optional) or use client-side filtering
+- [x] 5.4. Add tag display to post template
+- [x] 5.5. Style tags as clickable badges
+- [x] 5.6. Implement tag filtering on index page
+- [x] 5.7. Add "All tags" view to index page
+- [x] 5.8. Test tag filtering works correctly
 
 ---
 
@@ -222,13 +222,13 @@ Jinja2>=3.1.2
 
 #### Tasks
 
-- [ ] 6.1. Create Google Analytics 4 account
-- [ ] 6.2. Set up new property for blog.victorgoico.com
-- [ ] 6.3. Get tracking ID (G-XXXXXXXXXX)
-- [ ] 6.4. Add GA4 tracking code to base.html
-- [ ] 6.5. Test analytics tracking in real-time view
-- [ ] 6.6. Set up basic goals/events (optional)
-- [ ] 6.7. Document analytics setup in README.md
+- [x] 6.1. Create Google Analytics 4 account
+- [x] 6.2. Set up new property for blog.victorgoico.com
+- [x] 6.3. Get tracking ID (G-XXXXXXXXXX)
+- [x] 6.4. Add GA4 tracking code to base.html
+- [x] 6.5. Test analytics tracking in real-time view
+- [x] 6.6. Set up basic goals/events (optional)
+- [x] 6.7. Document analytics setup in README.md
 
 **GA4 Script:**
 
@@ -266,38 +266,6 @@ Jinja2>=3.1.2
 - [ ] 7.5. Test blog.victorgoico.com loads correctly
 - [ ] 7.6. Set up automatic deployment workflow (optional)
 - [ ] 7.7. Document deployment process in README.md
-
----
-
-### PR #8: Portfolio Navigation Integration
-
-**Priority:** Medium
-**Estimated Time:** 30 minutes
-
-**Note:** Portfolio lives in a separate repo. Complete AFTER PR #1 (DNS) and PR #7 (Deployment) are done. Changes are made in the portfolio repo, not this blog repo.
-
-#### Tasks
-
-- [ ] 8.1. In the portfolio repo, open `index.html`
-- [ ] 8.2. Add "Blog" link to navigation menu
-- [ ] 8.3. Link to `https://blog.victorgoico.com`
-- [ ] 8.4. Ensure link opens in same tab (internal site experience)
-- [ ] 8.5. Style blog link to match other nav items
-- [ ] 8.6. Test navigation from portfolio to blog works
-- [ ] 8.7. Add back link from blog to portfolio (optional; edit blog templates in this repo)
-
-**Code Change (in portfolio repo):**
-
-```html
-<!-- In portfolio repo index.html nav -->
-<ul class="nav-links">
-  <li><a href="#featured">Featured</a></li>
-  <li><a href="#about">About</a></li>
-  <li><a href="#projects">Projects</a></li>
-  <li><a href="https://blog.victorgoico.com">Blog</a></li>
-  <li><a href="#contact">Contact</a></li>
-</ul>
-```
 
 ---
 
@@ -401,7 +369,6 @@ python build.py --clean
 - RSS feed functional and validated
 - Google Analytics tracking visitors
 - Can write and publish new posts in < 5 minutes
-- Portfolio repo nav links to blog correctly
 - All SEO meta tags render properly
 
 ---

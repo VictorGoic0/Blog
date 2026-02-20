@@ -8,7 +8,7 @@
 
 ## Key Technical Decisions
 
-- **Repo boundary:** Blog-only repo so GitHub Pages can use one CNAME (blog.victorgoico.com). Portfolio is a separate repo; PR #8 changes are in the portfolio repo.
+- **Repo boundary:** Blog-only repo so GitHub Pages can use one CNAME (blog.victorgoico.com). Portfolio is a separate repo.
 - **Content format:** Markdown + YAML frontmatter (title, date, tags, description). No CMS.
 - **Output:** Generated files in `output/` (gitignored). CNAME must be at repo root or copied into output so Pages serves the custom domain.
 - **Tags:** Extracted in build; tag index in build script. Filtering on index (client-side or tag pages) per PR #5.

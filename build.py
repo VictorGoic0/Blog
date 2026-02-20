@@ -26,6 +26,8 @@ OUTPUT_DIR = PROJECT_ROOT / "output"
 OUTPUT_POSTS_DIR = OUTPUT_DIR / "posts"
 
 SITE_URL = "https://blog.victorgoico.com"
+# GA4 Measurement ID (G-XXXXXXXXXX). Leave empty to disable analytics.
+GA4_MEASUREMENT_ID = "G-MQ8Y3G6RKR"
 
 
 def parse_args():
@@ -144,6 +146,7 @@ def build(single_path: Path | None = None) -> None:
     )
     env.globals["current_year"] = datetime.now().year
     env.globals["site_url"] = SITE_URL
+    env.globals["ga4_measurement_id"] = GA4_MEASUREMENT_ID
 
     post_paths = discover_posts(single_path)
     if not post_paths:
@@ -188,7 +191,13 @@ def build(single_path: Path | None = None) -> None:
         print(f"  {post['url']}")
 
     all_tags = sorted(set(t for p in posts_data for t in p["tags"]))
-    index_html = index_template.render(posts=posts_data, all_tags=all_tags)
+    # Tag index: map each tag to list of posts (for "All tags" counts and tag pages)
+    tag_index: dict[str, list[dict]] = {}
+    for tag in all_tags:
+        tag_index[tag] = [p for p in posts_data if tag in p["tags"]]
+    index_html = index_template.render(
+        posts=posts_data, all_tags=all_tags, tag_index=tag_index
+    )
     (OUTPUT_DIR / "index.html").write_text(index_html, encoding="utf-8")
     print("  index.html")
 

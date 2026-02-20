@@ -330,6 +330,39 @@ img {
   line-height: v.$line-height-body;
 }
 
+// --- All tags section (index) ---
+.all-tags {
+  margin-bottom: v.$spacing-xl;
+  padding: v.$spacing-md 0;
+  border-top: 1px solid v.$color-border;
+}
+
+.all-tags-title {
+  font-size: v.$font-size-h3;
+  margin: 0 0 v.$spacing-sm;
+  font-weight: 600;
+}
+
+.all-tags-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$spacing-sm v.$spacing-md;
+
+  li {
+    display: inline-flex;
+    align-items: baseline;
+    gap: v.$spacing-xs;
+  }
+}
+
+.tag-count {
+  font-size: v.$font-size-small;
+  color: v.$color-text-muted;
+}
+
 // --- Responsive ---
 @media (max-width: v.$breakpoint-mobile) {
   html {

@@ -27,7 +27,7 @@ Build a custom markdown-based blog system for blog.victorgoico.com. Full control
 - Static site generation (no server runtime).
 - Posts, index, tag filtering, RSS, sitemap.
 - GA4, CNAME/DNS, README and usage docs.
-- Portfolio nav link to blog (change in portfolio repo); optional back link from blog to portfolio (in this repo).
+- Optional back link from blog to portfolio (in this repo).
 
 ## Scope (Out of Scope for Initial PRs)
 

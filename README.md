@@ -7,9 +7,9 @@ Custom markdown-based blog built with a Python script, Jinja2 templates, and Sas
 The blog is served at the `blog` subdomain (blog.victorgoico.com). To point it at GitHub Pages:
 
 1. In **SquareSpace DNS** for the root domain (victorgoico.com), open **Custom Records** and add:
-   - **Type:** CNAME  
-   - **Host:** `blog`  
-   - **Alias Data:** `victorgoic0.github.io` (or this repo’s GitHub Pages hostname)  
+   - **Type:** CNAME
+   - **Host:** `blog`
+   - **Alias Data:** `victorgoic0.github.io` (or this repo’s GitHub Pages hostname)
    - **TTL:** 30 minutes (or minimum available)
 
 2. The repo contains `CNAME` at the root with the custom domain. That file must be present in the deployed output root so GitHub Pages can serve the site on the subdomain.

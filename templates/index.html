@@ -10,10 +10,18 @@
     <div class="tag-filter-buttons">
         <button type="button" class="tag-filter-btn active" data-tag="">All</button>
         {% for tag in all_tags %}
-        <button type="button" class="tag-filter-btn" data-tag="{{ tag }}">{{ tag }}</button>
+        <button type="button" class="tag-filter-btn" data-tag="{{ tag }}">{{ tag }} ({{ tag_index[tag]|length }})</button>
         {% endfor %}
     </div>
 </div>
+<section class="all-tags" aria-label="All tags">
+    <h2 class="all-tags-title">All tags</h2>
+    <ul class="all-tags-list">
+        {% for tag in all_tags %}
+        <li><a href="/?tag={{ tag | urlencode }}" class="tag">{{ tag }}</a> <span class="tag-count">({{ tag_index[tag]|length }})</span></li>
+        {% endfor %}
+    </ul>
+</section>
 {% endif %}
 
 <ul class="post-list">
@@ -39,16 +47,28 @@
   var buttons = document.querySelectorAll('.tag-filter-btn');
   var items = document.querySelectorAll('.post-list-item');
   if (!buttons.length || !items.length) return;
+
+  function applyFilter(tag) {
+    tag = (tag || '').toLowerCase();
+    buttons.forEach(function(b) {
+      var bTag = (b.getAttribute('data-tag') || '').toLowerCase();
+      b.classList.toggle('active', bTag === tag);
+    });
+    items.forEach(function(item) {
+      var tags = (item.getAttribute('data-tags') || '').toLowerCase().split(/\s+/);
+      var show = !tag || tags.indexOf(tag) !== -1;
+      item.classList.toggle('hidden', !show);
+    });
+  }
+
+  // Apply ?tag= from URL on load (e.g. from post tag link)
+  var params = new URLSearchParams(window.location.search);
+  var initialTag = params.get('tag') || '';
+  if (initialTag) applyFilter(initialTag);
+
   buttons.forEach(function(btn) {
     btn.addEventListener('click', function() {
-      var tag = (this.getAttribute('data-tag') || '').toLowerCase();
-      buttons.forEach(function(b) { b.classList.remove('active'); });
-      this.classList.add('active');
-      items.forEach(function(item) {
-        var tags = (item.getAttribute('data-tags') || '').toLowerCase().split(/\s+/);
-        var show = !tag || tags.indexOf(tag) !== -1;
-        item.classList.toggle('hidden', !show);
-      });
+      applyFilter(this.getAttribute('data-tag'));
     });
   });
 })();
