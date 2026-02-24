@@ -35,4 +35,7 @@ CNAME       →  (in repo root or output)  →  GitHub Pages custom domain
 - Header: `.site-header-inner` flex row — logo (`GOICOLOG_`) left, nav right. Color inherited from `.site-header-inner` (black). No border-bottom.
 - Nav links: `Articles` (links to `/`), `About` (links to `victorgoico.com/#about`, new tab). All black.
 - Post meta order: `date · By [Author] · N min read` — appears above `<h1>`. Author links to `victorgoico.com`.
-- Tag filter UI: commented out in templates pending redesign Phase 2. Build still generates tag data.
+- Tag filter UI: commented out in templates. Build still generates tag data. Will re-enable in `articles-hero` section once multiple articles exist.
+- Articles list page uses `page-articles` body class (suppresses header/footer borders) and `main-content--wide` (1400px max-width). Both injected via Jinja2 block overrides in `index.html`.
+- Article card left column convention: `date_short` (YY.MM.DD) at top, `tags[0]` as primary category in middle, "By Victor M. Goico" pinned to bottom. First tag = primary category by convention — no new frontmatter field needed.
+- `$color-border-dark: #b0b0b0` used exclusively for articles page borders. `$color-border: #e0e0e0` used everywhere else.

@@ -29,11 +29,11 @@
 | Phase | Scope | Status |
 |-------|-------|--------|
 | Phase 1 | Article page layout (`page-design.png`) — header logo/nav, post meta above title, author attribution, tag filter hidden | Done |
-| Phase 2 | Article list page layout (`list-design.png`) | Pending |
+| Phase 2 | Article list page layout (`list-design.png`) — hero, two-column cards, dark borders, wide layout, header/footer border suppression | Done |
 
 ## Current Status
 
-- **Phase:** All PRs complete. Blog is live. Redesign Phase 1 complete.
+- **Phase:** All PRs complete. Both redesign phases complete. Blog is live and visually matches both designs.
 - **Blocker:** None.
 
 ## Known Issues
