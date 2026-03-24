@@ -1,7 +1,15 @@
 ---
 title: "Why is Bitcoin King? Part One: The History"
 date: 2026-02-20
-tags: [Bitcoin, Currencies, Cryptocurrencies, Cryptography, Inflation, Distributed Systems]
+tags:
+  [
+    Bitcoin,
+    Currencies,
+    Cryptocurrencies,
+    Cryptography,
+    Inflation,
+    Distributed Systems,
+  ]
 description: "Part One: The History"
 ---
 

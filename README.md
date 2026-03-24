@@ -4,6 +4,27 @@ Custom markdown-based blog built with a Python script, Jinja2 templates, and Sas
 
 ## Writing posts
 
+### Publishing a post
+
+1. **Create the file.** Add a `.md` file to `posts/` using the naming convention `YYYY-MM-DD-slug-here.md` (e.g. `posts/2026-03-24-my-new-post.md`).
+
+2. **Add frontmatter** at the very top of the file:
+   ```yaml
+   ---
+   title: "Your Post Title"
+   date: 2026-03-24
+   tags: [PrimaryCategory, Tag2, Tag3]
+   description: "Short description for SEO and social previews"
+   ---
+   ```
+   The **first tag** is treated as the primary category and shown on the article card on the index page.
+
+3. **Write the body** in Markdown below the frontmatter. Inline HTML (e.g. `<img>`, `<strong>`, `<span>`) is fine anywhere. Avoid wrapping content in block-level tags (`<div>`, `<section>`) — Markdown stops processing inside them.
+
+4. **Commit and push to `master`.** Deployment is fully automatic — no manual build step needed.
+
+---
+
 ### Markdown and HTML
 
 Posts are written in Markdown. You can also use raw HTML inline — the Markdown parser passes it through untouched.
