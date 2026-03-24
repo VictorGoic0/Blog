@@ -1,8 +1,8 @@
 ---
-title: "Why is Bitcoin King? Part One: The History"
+title: "Why is Bitcoin King? Part One: The Preface"
 date: 2026-03-24
 tags: [Bitcoin, Currencies, Cryptocurrencies, Inflation]
-description: "Part One: The History"
+description: "Prefacing the problem"
 ---
 
 This is my first ever blog post. Welcome! I have some ideas and knowledge that have been bouncing around in my head for years, and I've just never bothered to share them online.
@@ -85,8 +85,7 @@ To be continued.
 
 #### Coming Up in This Series
 
-- Part 2: The History (cont)
+- Part 2: The History
 - Part 3: WTF Happened in 1971?
 - Part 4: The Solution
 - Part 5: The Solution (cont)
-- Part 6: So What Now?
